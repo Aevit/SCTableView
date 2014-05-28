@@ -49,11 +49,16 @@
 - (void)refreshViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     //
     
-    if (!self.hidden && !_isLoading && scrollView.contentOffset.y <= -(self.frame.size.height / 2)) {
+    if (!self.hidden && !_isLoading && scrollView.contentOffset.y <= -self.frame.size.height) {
         if ([_delegate respondsToSelector:@selector(refreshViewDidBeginToRefresh:)]) {
             
-            [scrollView setContentInset:UIEdgeInsetsMake(self.frame.size.height, scrollView.contentInset.left, scrollView.contentInset.bottom, scrollView.contentInset.right)];
-            [scrollView setContentOffset:CGPointMake(0, -self.frame.size.height) animated:YES];
+            [scrollView setContentInset:UIEdgeInsetsMake(-scrollView.contentOffset.y, scrollView.contentInset.left, scrollView.contentInset.bottom, scrollView.contentInset.right)];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.2f animations:^{
+                    [scrollView setContentInset:UIEdgeInsetsMake(self.frame.size.height, scrollView.contentInset.left, scrollView.contentInset.bottom, scrollView.contentInset.right)];
+                }];
+            });
             
             [_refreshIndicatorView startAnimating];
             self.isLoading = YES;
@@ -64,7 +69,6 @@
 
 - (void)refreshViewDidFinishedLoading:(UIScrollView *)scrollView {
     
-    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     [scrollView setContentInset:UIEdgeInsetsMake(0, scrollView.contentInset.left, scrollView.contentInset.bottom, scrollView.contentInset.right)];
     
     self.isLoading = NO;
