@@ -55,6 +55,7 @@
         tableView.isTableRefreshing = NO;
         
         tableView.loadMoreView.hidden = (_rowNum > 0 ? NO : YES);
+        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 50 ? NO : YES);
     });
 }
 
@@ -64,9 +65,7 @@
         [tableView reloadData];
         tableView.isTableLoadingMore = NO;
         
-        if (_rowNum >= 50) {
-            tableView.loadMoreView.loadMoreBtn.hidden = NO;
-        }
+        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 50 ? NO : YES);
     });
 }
 
