@@ -25,6 +25,7 @@
 - (void)loadMoreViewDidScroll:(UIScrollView*)scrollView;
 - (void)loadMoreViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 - (void)loadMoreViewDidFinishedLoading:(UIScrollView*)scrollView;
+- (void)loadMoreViewDidEndDecelerating:(UIScrollView*)scrollView;
 
 @end
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1118AD61934FD7000D453E3 /* SCLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1118AD51934FD7000D453E3 /* SCLoadingView.m */; };
 		E1118AD91935003800D453E3 /* SCRereshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1118AD81935003800D453E3 /* SCRereshHeaderView.m */; };
 		E162B82A1929160A00C3B944 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E162B8291929160A00C3B944 /* Foundation.framework */; };
 		E162B82C1929160A00C3B944 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E162B82B1929160A00C3B944 /* CoreGraphics.framework */; };
@@ -25,6 +24,10 @@
 		E162B8551929160A00C3B944 /* SCTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E162B8541929160A00C3B944 /* SCTableViewTests.m */; };
 		E162B8611929166600C3B944 /* SCTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E162B8601929166600C3B944 /* SCTableView.m */; };
 		E162B869192922D200C3B944 /* SCLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E162B868192922D200C3B944 /* SCLoadMoreFooterView.m */; };
+		E175582C1938297300586D1C /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E175582B1938297300586D1C /* SCTableViewController.m */; };
+		E1755831193830D000586D1C /* SCDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E175582F193830D000586D1C /* SCDemoTableViewController.m */; };
+		E1755832193830D000586D1C /* SCDemoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1755830193830D000586D1C /* SCDemoTableViewController.xib */; };
+		E1B2E59819379359001C9FEC /* SCRefreshCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B2E59719379359001C9FEC /* SCRefreshCircleView.m */; };
 		E1D31DD5192C4EFD0073AA65 /* SCMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D31DD4192C4EFD0073AA65 /* SCMessageManager.m */; };
 		E1D31DE5192C53950073AA65 /* DCCrossHairView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D31DD9192C53950073AA65 /* DCCrossHairView.m */; };
 		E1D31DE6192C53950073AA65 /* DCFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D31DDB192C53950073AA65 /* DCFrameView.m */; };
@@ -45,8 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E1118AD41934FD7000D453E3 /* SCLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCLoadingView.h; path = SCTableView/SCLoadingView.h; sourceTree = "<group>"; };
-		E1118AD51934FD7000D453E3 /* SCLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCLoadingView.m; path = SCTableView/SCLoadingView.m; sourceTree = "<group>"; };
 		E1118AD71935003800D453E3 /* SCRereshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRereshHeaderView.h; path = SCTableView/SCRereshHeaderView.h; sourceTree = "<group>"; };
 		E1118AD81935003800D453E3 /* SCRereshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRereshHeaderView.m; path = SCTableView/SCRereshHeaderView.m; sourceTree = "<group>"; };
 		E162B8261929160A00C3B944 /* SCTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +73,13 @@
 		E162B8601929166600C3B944 /* SCTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCTableView.m; path = SCTableView/SCTableView.m; sourceTree = "<group>"; };
 		E162B867192922D200C3B944 /* SCLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCLoadMoreFooterView.h; path = SCTableView/SCLoadMoreFooterView.h; sourceTree = "<group>"; };
 		E162B868192922D200C3B944 /* SCLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCLoadMoreFooterView.m; path = SCTableView/SCLoadMoreFooterView.m; sourceTree = "<group>"; };
+		E175582A1938297300586D1C /* SCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCTableViewController.h; path = SCTableView/SCTableViewController.h; sourceTree = "<group>"; };
+		E175582B1938297300586D1C /* SCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCTableViewController.m; path = SCTableView/SCTableViewController.m; sourceTree = "<group>"; };
+		E175582E193830D000586D1C /* SCDemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoTableViewController.h; sourceTree = "<group>"; };
+		E175582F193830D000586D1C /* SCDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoTableViewController.m; sourceTree = "<group>"; };
+		E1755830193830D000586D1C /* SCDemoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCDemoTableViewController.xib; sourceTree = "<group>"; };
+		E1B2E59619379358001C9FEC /* SCRefreshCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRefreshCircleView.h; path = SCTableView/SCRefreshCircleView.h; sourceTree = "<group>"; };
+		E1B2E59719379359001C9FEC /* SCRefreshCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRefreshCircleView.m; path = SCTableView/SCRefreshCircleView.m; sourceTree = "<group>"; };
 		E1D31DD3192C4EFD0073AA65 /* SCMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCMessageManager.h; path = SCTableView/SCMessageManager.h; sourceTree = "<group>"; };
 		E1D31DD4192C4EFD0073AA65 /* SCMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCMessageManager.m; path = SCTableView/SCMessageManager.m; sourceTree = "<group>"; };
 		E1D31DD8192C53950073AA65 /* DCCrossHairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCrossHairView.h; sourceTree = "<group>"; };
@@ -151,6 +159,9 @@
 				E162B83B1929160A00C3B944 /* Main.storyboard */,
 				E162B83E1929160A00C3B944 /* ViewController.h */,
 				E162B83F1929160A00C3B944 /* ViewController.m */,
+				E175582E193830D000586D1C /* SCDemoTableViewController.h */,
+				E175582F193830D000586D1C /* SCDemoTableViewController.m */,
+				E1755830193830D000586D1C /* SCDemoTableViewController.xib */,
 				E162B8411929160A00C3B944 /* Images.xcassets */,
 				E1D31DD6192C53950073AA65 /* Vendor */,
 				E162B85E1929162B00C3B944 /* SCTableView */,
@@ -191,16 +202,18 @@
 		E162B85E1929162B00C3B944 /* SCTableView */ = {
 			isa = PBXGroup;
 			children = (
+				E175582A1938297300586D1C /* SCTableViewController.h */,
+				E175582B1938297300586D1C /* SCTableViewController.m */,
 				E162B85F1929166600C3B944 /* SCTableView.h */,
 				E162B8601929166600C3B944 /* SCTableView.m */,
 				E1D31DD3192C4EFD0073AA65 /* SCMessageManager.h */,
 				E1D31DD4192C4EFD0073AA65 /* SCMessageManager.m */,
 				E1118AD71935003800D453E3 /* SCRereshHeaderView.h */,
 				E1118AD81935003800D453E3 /* SCRereshHeaderView.m */,
+				E1B2E59619379358001C9FEC /* SCRefreshCircleView.h */,
+				E1B2E59719379359001C9FEC /* SCRefreshCircleView.m */,
 				E162B867192922D200C3B944 /* SCLoadMoreFooterView.h */,
 				E162B868192922D200C3B944 /* SCLoadMoreFooterView.m */,
-				E1118AD41934FD7000D453E3 /* SCLoadingView.h */,
-				E1118AD51934FD7000D453E3 /* SCLoadingView.m */,
 			);
 			name = SCTableView;
 			sourceTree = "<group>";
@@ -309,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1755832193830D000586D1C /* SCDemoTableViewController.xib in Resources */,
 				E162B8421929160A00C3B944 /* Images.xcassets in Resources */,
 				E162B8341929160A00C3B944 /* InfoPlist.strings in Resources */,
 				E162B83D1929160A00C3B944 /* Main.storyboard in Resources */,
@@ -333,17 +347,19 @@
 				E1D31DE5192C53950073AA65 /* DCCrossHairView.m in Sources */,
 				E1D31DEA192C53950073AA65 /* UIView+DCAdditions.m in Sources */,
 				E162B8401929160A00C3B944 /* ViewController.m in Sources */,
+				E1B2E59819379359001C9FEC /* SCRefreshCircleView.m in Sources */,
 				E162B8611929166600C3B944 /* SCTableView.m in Sources */,
 				E162B83A1929160A00C3B944 /* AppDelegate.m in Sources */,
 				E162B869192922D200C3B944 /* SCLoadMoreFooterView.m in Sources */,
 				E1118AD91935003800D453E3 /* SCRereshHeaderView.m in Sources */,
+				E1755831193830D000586D1C /* SCDemoTableViewController.m in Sources */,
 				E1D31DE6192C53950073AA65 /* DCFrameView.m in Sources */,
 				E162B8361929160A00C3B944 /* main.m in Sources */,
 				E1D31DD5192C4EFD0073AA65 /* SCMessageManager.m in Sources */,
 				E1D31DE7192C53950073AA65 /* DCIntrospect.m in Sources */,
 				E1D31DE8192C53950073AA65 /* DCStatusBarOverlay.m in Sources */,
-				E1118AD61934FD7000D453E3 /* SCLoadingView.m in Sources */,
 				E1D31DE9192C53950073AA65 /* DCTextView.m in Sources */,
+				E175582C1938297300586D1C /* SCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -457,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -14,7 +14,14 @@
 
 @interface SCTableView : UITableView <UIScrollViewDelegate, SCRereshHeaderViewDelegate, SCLoadMoreFooterViewDelegate>
 
-@property (nonatomic, assign) id <SCTableViewDelegate> scDelegate;
+@property (nonatomic, assign) IBOutlet id <SCTableViewDelegate> scDelegate;
+
+/**
+ *  isRefreshViewOnTableView
+ *  YES:refreshView是tableView的子view
+ *  NO:refreshView是tableView.superView的子view
+ */
+@property (nonatomic, assign) BOOL isRefreshViewOnTableView;
 
 //refresh
 @property (nonatomic, strong) SCRereshHeaderView *refreshView;

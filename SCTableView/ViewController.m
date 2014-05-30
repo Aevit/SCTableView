@@ -8,13 +8,14 @@
 
 #import "ViewController.h"
 #import "SCTableView.h"
+#import "SCDemoTableViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, SCTableViewDelegate>
 
 @property (nonatomic, strong) SCTableView *scTableView;
 
 
-#warning 测试 number
+#warning debug ViewController
 @property (nonatomic, assign) int rowNum;
 
 @end
@@ -27,7 +28,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     _rowNum = 0;
     
-    SCTableView *aTable = [[SCTableView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20) style:UITableViewStylePlain];
+    SCTableView *aTable = [[SCTableView alloc] initWithFrame:CGRectMake(0, ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 ? 20 : 0)) style:UITableViewStylePlain];
     aTable.delegate = self;
     aTable.dataSource = self;
     aTable.scDelegate = self;
@@ -35,16 +36,17 @@
     [self.view addSubview:aTable];
     self.scTableView = aTable;
     
+    if (_rowNum <= 0) {
+        aTable.isTableRefreshing = YES;
+        [self didBeginToRefresh:aTable];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
 }
 
 #pragma mark - SCTableView delegate
@@ -86,6 +88,17 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"row: %d", indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //进入继承自SCTableViewController的一个实例
+    SCDemoTableViewController *con = [[SCDemoTableViewController alloc] initWithNibName:@"SCDemoTableViewController" bundle:nil];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:con];
+    [self presentViewController:con animated:YES completion:^{
+        ;
+    }];
 }
 
 

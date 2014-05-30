@@ -9,8 +9,10 @@
 #import "SCTableView.h"
 #import "SCMessageManager.h"
 
+
 @interface SCTableView () {
     SCMessageManager *delegateManager;
+    CGFloat preOffsetY;
 }
 
 @end
@@ -45,6 +47,8 @@
 
 - (void)commonInit {
     
+    preOffsetY = 0;
+    
     //
     delegateManager = [[SCMessageManager alloc] init];
     delegateManager.middleBridge = self;
@@ -53,11 +57,17 @@
     
     
     //refreshView
+    _isRefreshViewOnTableView = YES;
+    
     static CGFloat refreshViewHeight = 50;
-    SCRereshHeaderView *aView = [[SCRereshHeaderView alloc] initWithFrame:CGRectMake(0, -refreshViewHeight, self.frame.size.width, refreshViewHeight)];
+    SCRereshHeaderView *aView = [[SCRereshHeaderView alloc] initWithFrame:(_isRefreshViewOnTableView ? CGRectMake(0, -refreshViewHeight, self.frame.size.width, refreshViewHeight) : CGRectMake(0, self.frame.origin.y, self.frame.size.width, refreshViewHeight))];
     aView.delegate = self;
-    [self addSubview:aView];
+    if (_isRefreshViewOnTableView) {
+        [self addSubview:aView];
+    }
+    aView.refreshCircleView.isRefreshViewOnTableView = _isRefreshViewOnTableView;
     self.refreshView = aView;
+    
     
     //loadMoreView
     static CGFloat loadMoreViewHeight = 50;
@@ -68,17 +78,59 @@
     self.loadMoreView = bView;
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (_isRefreshViewOnTableView == NO) {
+        self.backgroundColor = [UIColor clearColor];
+        [newSuperview insertSubview:_refreshView belowSubview:self];
+    }
+}
+
+- (void)setIsRefreshViewOnTableView:(BOOL)isRefreshViewOnTableView {
+    if (_isRefreshViewOnTableView != isRefreshViewOnTableView) {
+        
+        _isRefreshViewOnTableView = isRefreshViewOnTableView;
+        _refreshView.refreshCircleView.isRefreshViewOnTableView = isRefreshViewOnTableView;
+        
+        [_refreshView removeFromSuperview];
+        
+        _refreshView.frame = (_isRefreshViewOnTableView ? CGRectMake(0, -_refreshView.frame.size.height, self.frame.size.width, _refreshView.frame.size.height) : CGRectMake(0, self.frame.origin.y, self.frame.size.width, _refreshView.frame.size.height));
+        
+        if (_isRefreshViewOnTableView) {
+            [self addSubview:_refreshView];
+        } else {
+            self.backgroundColor = [UIColor clearColor];
+            [self.superview insertSubview:_refreshView belowSubview:self];
+        }
+    }
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    
+    if (_refreshView) {
+        CGRect refreshFrame = _refreshView.frame;
+        refreshFrame.origin.y = (_isRefreshViewOnTableView ? -refreshFrame.size.height : frame.origin.y);
+        _refreshView.frame = refreshFrame;
+    }
+}
+
 #pragma mark - set refresh or loadMore state
 - (void)setIsTableRefreshing:(BOOL)isTableRefreshing {
+    _isTableRefreshing = isTableRefreshing;
     if (_refreshView) {
         if (_isTableRefreshing == NO) {
             [_refreshView refreshViewDidFinishedLoading:self];
+        } else {
+//            [self setContentOffset:CGPointMake(0, -HEIGHT_BEGIN_TO_REFRESH) animated:YES];
+            [_refreshView startRefreshAnimation:self];
         }
     }
     
 }
 
 - (void)setIsTableLoadingMore:(BOOL)isTableLoadingMore {
+    _isTableLoadingMore = isTableLoadingMore;
     if (_loadMoreView) {
         if (_isTableLoadingMore == NO) {
             [_loadMoreView loadMoreViewDidFinishedLoading:self];
@@ -106,12 +158,14 @@
 #pragma mark - scrollview
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (_refreshView) {
+    if (_refreshView && !_isTableLoadingMore) {
         [_refreshView refreshViewDidScroll:scrollView];
     }
-    if (_loadMoreView) {
+    if (_loadMoreView && !_isTableRefreshing) {
         [_loadMoreView loadMoreViewDidScroll:scrollView];
     }
+    preOffsetY = scrollView.contentOffset.y;
+    
     
     //响应外部的scrollViewDidScroll
     if (delegateManager.receiver && [delegateManager.receiver respondsToSelector:@selector(scrollViewDidScroll:)]) {
@@ -134,6 +188,14 @@
     }
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    //响应外部的scrollViewDidEndDecelerating
+    if (delegateManager.receiver && [delegateManager.receiver respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+        [delegateManager.receiver scrollViewDidEndDecelerating:scrollView];
+    }
+}
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
     //响应外部的scrollViewWillBeginDragging
@@ -144,6 +206,8 @@
 
 #pragma mark - RefreshViewDelegate
 - (void)refreshViewDidBeginToRefresh:(SCRereshHeaderView *)refreshView {
+    _isTableRefreshing = YES;
+
     if ([_scDelegate respondsToSelector:@selector(didBeginToRefresh:)]) {
         [_scDelegate didBeginToRefresh:self];
     }
@@ -151,6 +215,7 @@
 
 #pragma mark - LoadMoreViewDelegate
 - (void)loadMoreViewDidBeginToLoadMore:(SCLoadMoreFooterView *)loadMoreView {
+    self.isTableLoadingMore = YES;
     if ([_scDelegate respondsToSelector:@selector(didBeginToLoadMoreData:)]) {
         [_scDelegate didBeginToLoadMoreData:self];
     }
