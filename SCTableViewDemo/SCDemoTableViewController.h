@@ -10,4 +10,6 @@
 
 @interface SCDemoTableViewController : SCTableViewController
 
+@property (nonatomic, assign) BOOL shouldMoveRefreshViewWithTableView;
+
 @end

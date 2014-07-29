@@ -35,6 +35,8 @@
 		E1D31DE8192C53950073AA65 /* DCStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D31DE0192C53950073AA65 /* DCStatusBarOverlay.m */; };
 		E1D31DE9192C53950073AA65 /* DCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D31DE2192C53950073AA65 /* DCTextView.m */; };
 		E1D31DEA192C53950073AA65 /* UIView+DCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D31DE4192C53950073AA65 /* UIView+DCAdditions.m */; };
+		E1D4B95E19874636002AA041 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D4B95C19874636002AA041 /* DemoViewController.m */; };
+		E1D4B95F19874636002AA041 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D4B95D19874636002AA041 /* DemoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,9 @@
 		E1D31DE2192C53950073AA65 /* DCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTextView.m; sourceTree = "<group>"; };
 		E1D31DE3192C53950073AA65 /* UIView+DCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DCAdditions.h"; sourceTree = "<group>"; };
 		E1D31DE4192C53950073AA65 /* UIView+DCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DCAdditions.m"; sourceTree = "<group>"; };
+		E1D4B95B19874636002AA041 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		E1D4B95C19874636002AA041 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		E1D4B95D19874636002AA041 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +167,9 @@
 				E175582E193830D000586D1C /* SCDemoTableViewController.h */,
 				E175582F193830D000586D1C /* SCDemoTableViewController.m */,
 				E1755830193830D000586D1C /* SCDemoTableViewController.xib */,
+				E1D4B95B19874636002AA041 /* DemoViewController.h */,
+				E1D4B95C19874636002AA041 /* DemoViewController.m */,
+				E1D4B95D19874636002AA041 /* DemoViewController.xib */,
 				E162B8411929160A00C3B944 /* Images.xcassets */,
 				E1D31DD6192C53950073AA65 /* Vendor */,
 				E162B85E1929162B00C3B944 /* SCTableView */,
@@ -326,6 +334,7 @@
 				E162B8421929160A00C3B944 /* Images.xcassets in Resources */,
 				E162B8341929160A00C3B944 /* InfoPlist.strings in Resources */,
 				E162B83D1929160A00C3B944 /* Main.storyboard in Resources */,
+				E1D4B95F19874636002AA041 /* DemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +356,7 @@
 				E1D31DE5192C53950073AA65 /* DCCrossHairView.m in Sources */,
 				E1D31DEA192C53950073AA65 /* UIView+DCAdditions.m in Sources */,
 				E162B8401929160A00C3B944 /* ViewController.m in Sources */,
+				E1D4B95E19874636002AA041 /* DemoViewController.m in Sources */,
 				E1B2E59819379359001C9FEC /* SCRefreshCircleView.m in Sources */,
 				E162B8611929166600C3B944 /* SCTableView.m in Sources */,
 				E162B83A1929160A00C3B944 /* AppDelegate.m in Sources */,

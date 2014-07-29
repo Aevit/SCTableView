@@ -31,7 +31,7 @@
     
     [self commonInit];
     
-    //如果没用xib添加tableView，才需要在这里用代码添加talbeView
+    // 如果没用xib添加tableView，才需要在这里用代码添加talbeView
     if (!_scTableView) {
         SCTableView *aTable = [[SCTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
         aTable.delegate = self;
@@ -89,7 +89,6 @@
         }
     }
 }
-
 
 /**
  *  重置列表数据

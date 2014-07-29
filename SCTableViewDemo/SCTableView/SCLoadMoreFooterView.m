@@ -35,7 +35,7 @@
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     aButton.frame = CGRectMake(15, 5, self.frame.size.width - 15 * 2, self.frame.size.height - 5 * 2);
     [aButton addTarget:self action:@selector(loadMoreButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [aButton setTitle:@"显示下20条" forState:UIControlStateNormal];
+    [aButton setTitle:@"显示更多" forState:UIControlStateNormal];
     [aButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [aButton setBackgroundColor:[UIColor colorWithRed:235 / 255.0 green:235 / 255.0 blue:235 / 255.0 alpha:1]];
     aButton.layer.borderColor = [UIColor colorWithRed:221 / 255.0 green:221 / 255.0 blue:221 / 255.0 alpha:1].CGColor;
@@ -50,7 +50,7 @@
     self.loadMoreBtn = aButton;
     
     
-    //
+    // loading view
     UIActivityIndicatorView *aView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     aView.frame = (CGRect){.origin = CGPointMake(0, 0), .size = self.frame.size};
     aView.backgroundColor = self.backgroundColor;
@@ -101,7 +101,7 @@
     self.isLoading = NO;
     if (_loadMoreIndicatorView) {
         [_loadMoreIndicatorView stopAnimating];
-        _loadMoreBtn.hidden = NO;
+//        _loadMoreBtn.hidden = NO;
     }
 }
 

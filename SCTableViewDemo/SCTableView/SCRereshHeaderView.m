@@ -65,7 +65,7 @@
     
     
     [scrollView setContentInset:UIEdgeInsetsMake(-scrollView.contentOffset.y, scrollView.contentInset.left, scrollView.contentInset.bottom, scrollView.contentInset.right)];
-    //解决画面会闪一下的问题
+    // 解决画面会闪一下的问题
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.3f animations:^{
             [scrollView setContentInset:UIEdgeInsetsMake(self.frame.size.height, scrollView.contentInset.left, scrollView.contentInset.bottom, scrollView.contentInset.right)];
@@ -155,6 +155,8 @@
     switch (state) {
         case SCRefreshStateNormal:
         {
+            _refreshCircleView.offsetY = 0;
+            [_refreshCircleView setNeedsDisplay];
             _statusLbl.text = @"下拉刷新";
             break;
         }

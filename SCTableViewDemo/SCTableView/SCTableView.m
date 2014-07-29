@@ -45,16 +45,18 @@
     return self;
 }
 
+- (void)dealloc {
+    delegateManager.middleBridge = nil;
+    delegateManager.receiver = nil;
+    delegateManager = nil;
+    self.scDelegate = nil;
+    self.refreshView = nil;
+    self.loadMoreView = nil;
+}
+
 - (void)commonInit {
     
     preOffsetY = 0;
-    
-    //
-    delegateManager = [[SCMessageManager alloc] init];
-    delegateManager.middleBridge = self;
-    delegateManager.receiver = self.delegate;
-    super.delegate = (id)delegateManager;
-    
     
     //refreshView
     _isRefreshViewOnTableView = YES;
@@ -122,7 +124,6 @@
         if (_isTableRefreshing == NO) {
             [_refreshView refreshViewDidFinishedLoading:self];
         } else {
-//            [self setContentOffset:CGPointMake(0, -HEIGHT_BEGIN_TO_REFRESH) animated:YES];
             [_refreshView startRefreshAnimation:self];
         }
     }
@@ -138,15 +139,14 @@
     }
 }
 
-#pragma mark - rewrite
+#pragma mark - override
 - (void)setDelegate:(id<UITableViewDelegate>)delegate {
-    if(delegateManager) {
-        super.delegate = nil;
-        delegateManager.receiver = delegate;
-        super.delegate = (id)delegateManager;
-    } else {
-        super.delegate = delegate;
+    if (!delegateManager) {
+        delegateManager = [[SCMessageManager alloc] init];
     }
+    delegateManager.middleBridge = self;
+    delegateManager.receiver = delegate;
+    super.delegate = (id)delegateManager;
 }
 
 - (void)reloadData {
@@ -188,22 +188,6 @@
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-    //响应外部的scrollViewDidEndDecelerating
-    if (delegateManager.receiver && [delegateManager.receiver respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
-        [delegateManager.receiver scrollViewDidEndDecelerating:scrollView];
-    }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    
-    //响应外部的scrollViewWillBeginDragging
-    if (delegateManager.receiver && [delegateManager.receiver respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
-        [delegateManager.receiver scrollViewWillBeginDragging:scrollView];
-    }
-}
-
 #pragma mark - RefreshViewDelegate
 - (void)refreshViewDidBeginToRefresh:(SCRereshHeaderView *)refreshView {
     _isTableRefreshing = YES;
@@ -211,6 +195,7 @@
     if ([_scDelegate respondsToSelector:@selector(didBeginToRefresh:)]) {
         [_scDelegate didBeginToRefresh:self];
     }
+    
 }
 
 #pragma mark - LoadMoreViewDelegate
@@ -220,7 +205,6 @@
         [_scDelegate didBeginToLoadMoreData:self];
     }
 }
-
 
 
 /*

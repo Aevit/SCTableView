@@ -1,38 +1,58 @@
 //
-//  ViewController.m
+//  DemoViewController.m
 //  SCTableView
 //
-//  Created by Aevitx on 14-5-19.
+//  Created by Aevitx on 14-7-29.
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "DemoViewController.h"
 #import "SCTableView.h"
-#import "SCDemoTableViewController.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, SCTableViewDelegate>
-
-@property (nonatomic, strong) SCTableView *scTableView;
-
+@interface DemoViewController () <UITableViewDelegate, UITableViewDataSource, SCTableViewDelegate>
 
 #warning debug ViewController
 @property (nonatomic, assign) int rowNum;
 
+@property (nonatomic, strong) SCTableView *scTableView;
+
 @end
 
-@implementation ViewController
+@implementation DemoViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"DemoViewController";
+    
     _rowNum = 0;
     
-    SCTableView *aTable = [[SCTableView alloc] initWithFrame:CGRectMake(0, ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 ? 20 : 0)) style:UITableViewStylePlain];
+    float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    CGFloat tableViewY = (sysVersion < 7.0 ? 0 : (20 + (self.navigationController.navigationBarHidden ? 0 : self.navigationController.navigationBar.frame.size.height)));
+    
+    SCTableView *aTable = [[SCTableView alloc] initWithFrame:CGRectMake(0, tableViewY, self.view.frame.size.width, self.view.frame.size.height - (sysVersion < 7.0 ? (self.navigationController.navigationBarHidden ? 0 : self.navigationController.navigationBar.frame.size.height) : tableViewY)) style:UITableViewStylePlain];
+    aTable.isRefreshViewOnTableView = _shouldMoveRefreshViewWithTableView;
     aTable.delegate = self;
     aTable.dataSource = self;
     aTable.scDelegate = self;
     aTable.loadMoreView.hidden = (_rowNum > 0 ? NO : YES);
+    
+    if (_shouldMoveRefreshViewWithTableView) {
+        // 修改loadMoreBtn的文字
+        [aTable.loadMoreView.loadMoreBtn setTitle:@"显示下10条" forState:UIControlStateNormal];
+    }
+    
     [self.view addSubview:aTable];
     self.scTableView = aTable;
     
@@ -40,7 +60,6 @@
         aTable.isTableRefreshing = YES;
         [self didBeginToRefresh:aTable];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,7 +76,8 @@
         tableView.isTableRefreshing = NO;
         
         tableView.loadMoreView.hidden = (_rowNum > 0 ? NO : YES);
-        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 50 ? NO : YES);
+        
+        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 30 ? NO : YES);
     });
 }
 
@@ -67,7 +87,7 @@
         [tableView reloadData];
         tableView.isTableLoadingMore = NO;
         
-        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 50 ? NO : YES);
+        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 30 ? NO : YES);
     });
 }
 
@@ -92,14 +112,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    //进入继承自SCTableViewController的一个实例
-    SCDemoTableViewController *con = [[SCDemoTableViewController alloc] initWithNibName:@"SCDemoTableViewController" bundle:nil];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:con];
-    [self presentViewController:con animated:YES completion:^{
-        ;
-    }];
 }
-
 
 @end

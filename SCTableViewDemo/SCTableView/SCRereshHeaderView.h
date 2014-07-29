@@ -15,10 +15,10 @@ typedef enum {
     SCRefreshStateLoading    =   2
 } SCRefreshState;
 
-//开始画圆圈时的offset
+// 开始画圆圈时的offset
 #define HEIGHT_BEGIN_TO_DRAW_CIRCLE     20
 
-//圆圈开始旋转时的offset （即开始刷新数据时）
+// 画完圆圈，开始旋转时的offset （即开始刷新数据时）
 #define HEIGHT_BEGIN_TO_REFRESH         (50 + HEIGHT_BEGIN_TO_DRAW_CIRCLE)
 
 

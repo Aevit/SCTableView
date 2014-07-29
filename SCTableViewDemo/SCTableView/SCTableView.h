@@ -18,17 +18,33 @@
 
 /**
  *  isRefreshViewOnTableView
- *  YES:refreshView是tableView的子view
- *  NO:refreshView是tableView.superView的子view
+ *  YES: refreshView是tableView的子view
+ *  NO: refreshView是tableView.superView的子view
  */
 @property (nonatomic, assign) BOOL isRefreshViewOnTableView;
 
-//refresh
+/**
+ *  其hidden设为YES：不显示refreshView
+ *  其hidden设为NO： 显示refreshView
+ */
 @property (nonatomic, strong) SCRereshHeaderView *refreshView;
+
+/**
+ *  YES: 开始刷新动画，调用刷新接口
+ *  NO:  隐藏刷新动画
+ */
 @property (nonatomic, assign) BOOL isTableRefreshing;
 
-//load more
+/**
+ *  其hidden设为YES：不显示loadMoreView
+ *  其hidden设为NO： 显示loadMoreView
+ */
 @property (nonatomic, strong) SCLoadMoreFooterView *loadMoreView;
+
+/**
+ *  YES: 开始加载更多动画，调用加载更多接口
+ *  NO:  隐藏加载更多动画
+ */
 @property (nonatomic, assign) BOOL isTableLoadingMore;
 
 @end
