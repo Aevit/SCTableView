@@ -10,21 +10,22 @@
 
 @interface SCRefreshCircleView : UIView
 
-// 圆圈开始旋转时的offset （即开始刷新数据时）
+// the y value of offset which the circle begin to rotate (start to get data)
 @property (nonatomic, assign) CGFloat heightBeginToRefresh;
 
-// offset的Y值
+/**
+ *  the y value of offset
+ */
 @property (nonatomic, assign) CGFloat offsetY;
 
 /**
- *  isRefreshViewOnTableView
- *  YES: refreshView是tableView的子view
- *  NO: refreshView是tableView.superView的子view
+ *  YES: refreshView is the subview of tableView (refreshView will move with tableview)
+ *  NO: refreshView is the subview of tableView.superView (refreshView will NOT move with tableview)
  */
 @property (nonatomic, assign) BOOL isRefreshViewOnTableView;
 
 /**
- *  旋转的animation
+ *  the repeate ratate animation
  *
  *  @return animation
  */

@@ -38,11 +38,10 @@
     
     self.scTableView.delegate = self;
     self.scTableView.dataSource = self;
-    self.scTableView.scDelegate = self;
     
     if (_shouldMoveRefreshViewWithTableView) {
         // 修改loadMoreBtn的文字
-        [self.scTableView.loadMoreView.loadMoreBtn setTitle:@"显示下10条" forState:UIControlStateNormal];
+        [self.scTableView.loadMoreView.loadMoreBtn setTitle:@"显示下20条" forState:UIControlStateNormal];
     }
     self.scTableView.isRefreshViewOnTableView = _shouldMoveRefreshViewWithTableView;
 }
@@ -65,22 +64,25 @@
     if (self.dataArray.count <= 0) {
         self.scTableView.isTableRefreshing = YES;
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self stopLoading:sender];
         
+        // SCTableViewController里，如果是下拉刷新的，会自动设置needRemoveObjects为YES
         if (self.needRemoveObjects) {
             [self.dataArray removeAllObjects];
             self.needRemoveObjects = NO;
         }
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             [self.dataArray addObject:@"demo row"];
         }
         [self.scTableView reloadData];
         
         self.scTableView.loadMoreView.hidden = (self.dataArray.count > 0 ? NO : YES);
-        self.scTableView.loadMoreView.loadMoreBtn.hidden = (self.dataArray.count >= 30 ? NO : YES);
+        if (_shouldMoveRefreshViewWithTableView) {
+            self.scTableView.loadMoreView.loadMoreBtn.hidden = (self.dataArray.count >= 30 ? NO : YES);
+        }
     });
 }
 

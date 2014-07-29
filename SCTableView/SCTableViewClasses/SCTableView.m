@@ -46,9 +46,8 @@
 }
 
 - (void)dealloc {
-    delegateManager.middleBridge = nil;
-    delegateManager.receiver = nil;
-    delegateManager = nil;
+    self.delegate = nil;
+    self.dataSource = nil;
     self.scDelegate = nil;
     self.refreshView = nil;
     self.loadMoreView = nil;
@@ -62,7 +61,7 @@
     _isRefreshViewOnTableView = YES;
     
     static CGFloat refreshViewHeight = 50;
-    SCRereshHeaderView *aView = [[SCRereshHeaderView alloc] initWithFrame:(_isRefreshViewOnTableView ? CGRectMake(0, -refreshViewHeight, self.frame.size.width, refreshViewHeight) : CGRectMake(0, self.frame.origin.y, self.frame.size.width, refreshViewHeight))];
+    SCRefreshHeaderView *aView = [[SCRefreshHeaderView alloc] initWithFrame:(_isRefreshViewOnTableView ? CGRectMake(0, -refreshViewHeight, self.frame.size.width, refreshViewHeight) : CGRectMake(0, self.frame.origin.y, self.frame.size.width, refreshViewHeight))];
     aView.delegate = self;
     if (_isRefreshViewOnTableView) {
         [self addSubview:aView];
@@ -141,6 +140,13 @@
 
 #pragma mark - override
 - (void)setDelegate:(id<UITableViewDelegate>)delegate {
+    if (!delegate) {
+        delegateManager.middleBridge = nil;
+        delegateManager.receiver = nil;
+        delegateManager = nil;
+        super.delegate = nil;
+        return;
+    }
     if (!delegateManager) {
         delegateManager = [[SCMessageManager alloc] init];
     }
@@ -168,6 +174,9 @@
     
     
     //响应外部的scrollViewDidScroll
+    if (!delegateManager) {
+        return;
+    }
     if (delegateManager.receiver && [delegateManager.receiver respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [delegateManager.receiver scrollViewDidScroll:scrollView];
     }
@@ -189,7 +198,7 @@
 }
 
 #pragma mark - RefreshViewDelegate
-- (void)refreshViewDidBeginToRefresh:(SCRereshHeaderView *)refreshView {
+- (void)refreshViewDidBeginToRefresh:(SCRefreshHeaderView *)refreshView {
     _isTableRefreshing = YES;
 
     if ([_scDelegate respondsToSelector:@selector(didBeginToRefresh:)]) {

@@ -68,9 +68,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    self.scTableView.delegate = nil;// 需要置空，不然pop或dismiss controller后，tableView的didScrollView方法仍会执行，这时就会报错
+    self.scTableView = nil;
+}
+
 #pragma mark - SCTableView delegate
 - (void)didBeginToRefresh:(SCTableView *)tableView {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _rowNum = 20;
         [tableView reloadData];
         tableView.isTableRefreshing = NO;
@@ -82,12 +87,14 @@
 }
 
 - (void)didBeginToLoadMoreData:(SCTableView *)tableView {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _rowNum += 10;
         [tableView reloadData];
         tableView.isTableLoadingMore = NO;
         
-        tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 30 ? NO : YES);
+        if (_shouldMoveRefreshViewWithTableView) {
+            tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 30 ? NO : YES);
+        }
     });
 }
 

@@ -34,12 +34,12 @@
     // 如果没用xib添加tableView，才需要在这里用代码添加talbeView
     if (!_scTableView) {
         SCTableView *aTable = [[SCTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-        aTable.delegate = self;
-        aTable.dataSource = self;
-        aTable.scDelegate = self;
         [self.view addSubview:aTable];
         self.scTableView = aTable;
     }
+    _scTableView.delegate = self;
+    _scTableView.dataSource = self;
+    _scTableView.scDelegate = self;
     [self refresh:_scTableView];
 }
 
@@ -62,6 +62,7 @@
     [self.dataArray removeAllObjects];
     self.dataArray = nil;
     
+    self.scTableView.delegate = nil; // 需要置空，不然pop或dismiss controller后，tableView的didScrollView方法仍会执行，这时就会报错
     self.scTableView = nil;
 }
 
@@ -100,7 +101,7 @@
 
 #pragma mark - private
 /**
- *  发送更新信息，标记needRemoveObjects设置为yes,currentPage重置为第一页
+ *  发送更新信息，标记needRemoveObjects设置为yes, currentPage重置为第一页
  *
  *  @param sender _scTableView
  */

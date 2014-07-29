@@ -1,14 +1,14 @@
 //
-//  SCRereshHeaderView.m
+//  SCRefreshHeaderView.m
 //  SCTableView
 //
-//  Created by Aevitx on 14-5-28.
+//  Created by Aevitx on 14-7-29.
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
-#import "SCRereshHeaderView.h"
+#import "SCRefreshHeaderView.h"
 
-@interface SCRereshHeaderView ()
+@interface SCRefreshHeaderView ()
 
 @property (nonatomic, assign) BOOL isLoading;
 
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation SCRereshHeaderView
+@implementation SCRefreshHeaderView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -30,8 +30,6 @@
 }
 
 - (void)commonInit {
-    
-    
     
     //
     SCRefreshCircleView *circle = [[SCRefreshCircleView alloc] initWithFrame:CGRectMake((self.frame.size.width - 20) / 2 - 30, (self.frame.size.height - 20) / 2, 20, 20)];

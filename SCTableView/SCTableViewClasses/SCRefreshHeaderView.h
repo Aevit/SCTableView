@@ -1,12 +1,13 @@
 //
-//  SCRereshHeaderView.h
+//  SCRefreshHeaderView.h
 //  SCTableView
 //
-//  Created by Aevitx on 14-5-28.
+//  Created by Aevitx on 14-7-29.
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 #import "SCRefreshCircleView.h"
 
 typedef enum {
@@ -15,22 +16,23 @@ typedef enum {
     SCRefreshStateLoading    =   2
 } SCRefreshState;
 
-// 开始画圆圈时的offset
+// the y value of offset that begin to draw circle
 #define HEIGHT_BEGIN_TO_DRAW_CIRCLE     20
 
-// 画完圆圈，开始旋转时的offset （即开始刷新数据时）
+// the y value of offset which the circle begin to rotate (start to get data)
 #define HEIGHT_BEGIN_TO_REFRESH         (50 + HEIGHT_BEGIN_TO_DRAW_CIRCLE)
 
 
-@protocol SCRereshHeaderViewDelegate;
+@protocol SCRefreshHeaderViewDelegate;
 
-@interface SCRereshHeaderView : UIView
+@interface SCRefreshHeaderView : UIView
+
 
 @property (nonatomic, strong) SCRefreshCircleView *refreshCircleView;
 
 @property (nonatomic, assign) SCRefreshState state;
 
-@property (nonatomic, assign) id <SCRereshHeaderViewDelegate> delegate;
+@property (nonatomic, assign) id <SCRefreshHeaderViewDelegate> delegate;
 
 - (void)refreshViewDidScroll:(UIScrollView*)scrollView;
 - (void)refreshViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
@@ -43,9 +45,9 @@ typedef enum {
 
 
 
-@protocol SCRereshHeaderViewDelegate <NSObject>
+@protocol SCRefreshHeaderViewDelegate <NSObject>
 
 @optional
-- (void)refreshViewDidBeginToRefresh:(SCRereshHeaderView *)refreshView;
+- (void)refreshViewDidBeginToRefresh:(SCRefreshHeaderView *)refreshView;
 
 @end

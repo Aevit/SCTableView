@@ -14,8 +14,19 @@
 
 @property (nonatomic, strong) IBOutlet SCTableView *scTableView;
 
+/**
+ *  存储数据
+ */
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+/**
+ *  当前加载的页数
+ */
 @property (nonatomic, assign) NSUInteger currentPage;
+
+/**
+ *  清除全部数据
+ */
 @property (nonatomic, assign) BOOL needRemoveObjects;
 
 /**

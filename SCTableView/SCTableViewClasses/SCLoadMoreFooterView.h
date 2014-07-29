@@ -20,9 +20,9 @@
 @property (nonatomic, assign) CGFloat bottomOffsetToBeginLoadMoreData;
 
 /**
- *  "显示下xx条"按钮，点击后加载xx条数据
- *  其hidden为YES: 一直不显示此button
- *  其hidden为NO:  显示此button
+ *  the load more data button. will call the load more data method after click this button
+ *  set hidden to YES: will NOT show the load more data button
+ *  set hidden to NO:  will show the load more data button
  */
 @property (nonatomic, strong) UIButton *loadMoreBtn;
 
