@@ -4,6 +4,7 @@ SCTableView
 
 ---
 ###Preview
+![preivew_gif](https://raw.githubusercontent.com/Aevit/SCTableView/master/SCTableView_demo.gif)
 
 ---
 ###Description
@@ -80,4 +81,4 @@ to get data and reload tableview.
 
 ###License
 
-This code is distributed under the terms and conditions of the MIT license.  
+This code is distributed under the terms and conditions of the [MIT license](https://github.com/Aevit/SCTableView/blob/master/LICENSE).  
