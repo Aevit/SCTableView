@@ -8,23 +8,26 @@ SCTableView
 
 ---
 ###Description
-This is a **tableview** with **refreshView(header)** and **loadMoreView(footer)**. 
+It contains a **tableViewController** and a **tableView** with **refreshView(header)** and **loadMoreView(footer)**, and you can choose to show or hide the refreshView or loadMoreView.
 
 It imitates the UI of the iPhone app ——《网易新闻》.  
 
-It's easy to use.
+It is easy to use.
 
 ---
 ###How to use
+***Use `SCTableViewController`***
+
 1. copy the folder `SCTableViewClasses` to your project.
 2. add a controller inherits from `SCTableViewController` and set delegate, dataSource to the controller.
 3. override the method `- (void)sendRequest:(id)sender` in your controller to get data and reload tableview.  
 (There is a demo controller ***SCDemoTableViewController*** in my project.)
 
 
-####***or***  
+***Use `SCTableView`*** 
+
 1. copy the folder `SCTableViewClasses` to your project.
-2. add a tableview inherits from `SCTableView` to a controller and set delegate, dataSource, scDelegate to the controller.
+2. add a tableview inherits from `SCTableView` to a controller and set delegate, dataSource, ***scDelegate*** to the controller.
 3. use the scDelegate methods  
 `- (void)didBeginToRefresh:(SCTableView *)tableView`  
 and  
@@ -32,6 +35,7 @@ and
 to get data and reload tableview.   
 (There is a demo controller ***DemoViewController*** in my project.)
 
+---
 ###Properties
 * SCTableView: 
 
@@ -79,6 +83,7 @@ to get data and reload tableview.
 @property (nonatomic, strong) UIButton *loadMoreBtn;
 ```
 
+---
 ###License
 
 This code is distributed under the terms and conditions of the [MIT license](https://github.com/Aevit/SCTableView/blob/master/LICENSE).  
