@@ -1,23 +1,23 @@
 //
-//  DemoViewController.m
+//  FootballDemoViewController.m
 //  SCTableView
 //
-//  Created by Aevitx on 14-7-29.
+//  Created by Aevitx on 14-8-31.
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
-#import "DemoViewController.h"
-#import "SCCircleTableView.h"
+#import "FootballDemoViewController.h"
+#import "SCFootballTableView.h"
 
-@interface DemoViewController () <UITableViewDelegate, UITableViewDataSource, SCBasicTableViewDelegate>
+@interface FootballDemoViewController () <UITableViewDelegate, UITableViewDataSource, SCBasicTableViewDelegate>
 
 #warning debug
 @property (nonatomic, assign) int rowNum;
-@property (nonatomic, strong) SCCircleTableView *scTableView;
+@property (nonatomic, strong) SCFootballTableView *scTableView;
 
 @end
 
-@implementation DemoViewController
+@implementation FootballDemoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"DemoViewController";
+    self.title = @"FootballDemoViewController";
     
     self.view.frame = [UIScreen mainScreen].bounds;
     
@@ -42,17 +42,11 @@
     float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
     CGFloat tableViewY = (sysVersion < 7.0 ? 0 : (20 + (self.navigationController.navigationBarHidden ? 0 : self.navigationController.navigationBar.frame.size.height)));
     
-    SCCircleTableView *aTable = [[SCCircleTableView alloc] initWithFrame:CGRectMake(0, tableViewY, self.view.frame.size.width, self.view.frame.size.height - (sysVersion < 7.0 ? (self.navigationController.navigationBarHidden ? 0 : self.navigationController.navigationBar.frame.size.height) : tableViewY)) style:UITableViewStylePlain];
-    aTable.isRefreshViewOnTableView = _shouldMoveRefreshViewWithTableView;
+    SCFootballTableView *aTable = [[SCFootballTableView alloc] initWithFrame:CGRectMake(0, tableViewY, self.view.frame.size.width, self.view.frame.size.height - (sysVersion < 7.0 ? (self.navigationController.navigationBarHidden ? 0 : self.navigationController.navigationBar.frame.size.height) : tableViewY)) style:UITableViewStylePlain];
     aTable.delegate = self;
     aTable.dataSource = self;
     aTable.scDelegate = self;
     aTable.loadMoreView.hidden = (_rowNum > 0 ? NO : YES);
-    
-    if (_shouldMoveRefreshViewWithTableView) {
-        // 修改loadMoreBtn的文字
-        [aTable.loadMoreView.loadMoreBtn setTitle:@"显示下10条" forState:UIControlStateNormal];
-    }
     
     [self.view addSubview:aTable];
     self.scTableView = aTable;
@@ -75,7 +69,7 @@
 }
 
 #pragma mark - SCTableView delegate
-- (void)didBeginToRefresh:(SCCircleTableView *)tableView {
+- (void)didBeginToRefresh:(SCFootballTableView *)tableView {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _rowNum = 20;
         [tableView reloadData];
@@ -87,15 +81,11 @@
     });
 }
 
-- (void)didBeginToLoadMoreData:(SCCircleTableView *)tableView {
+- (void)didBeginToLoadMoreData:(SCFootballTableView *)tableView {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _rowNum += 10;
         [tableView reloadData];
         tableView.isTableLoadingMore = NO;
-        
-        if (_shouldMoveRefreshViewWithTableView) {
-            tableView.loadMoreView.loadMoreBtn.hidden = (_rowNum >= 30 ? NO : YES);
-        }
     });
 }
 

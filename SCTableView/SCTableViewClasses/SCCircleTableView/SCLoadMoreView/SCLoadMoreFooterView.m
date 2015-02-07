@@ -10,8 +10,6 @@
 
 @interface SCLoadMoreFooterView ()
 
-@property (nonatomic, assign) BOOL isLoading;
-
 @end
 
 @implementation SCLoadMoreFooterView
@@ -29,7 +27,7 @@
 - (void)commonInit {
     
     //
-    _bottomOffsetToBeginLoadMoreData = self.frame.size.height;
+    self.bottomOffsetToBeginLoadMoreData = self.frame.size.height;
     
     //
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -70,7 +68,7 @@
     }
     //
     CGFloat bottomOffset = [self scrollViewOffsetFromBottom:scrollView];
-    if (!_isLoading && bottomOffset <= -(_bottomOffsetToBeginLoadMoreData - 30) && _loadMoreBtn.hidden) {
+    if (self.state != SCLoadMoretateLoading && bottomOffset <= -(self.bottomOffsetToBeginLoadMoreData - 30) && _loadMoreBtn.hidden) {
         [self beginToLoadMore];
     }
     
@@ -98,35 +96,20 @@
     if (self.hidden) {
         return;
     }
-    self.isLoading = NO;
+    self.state = SCLoadMoreStateNormal;
     if (_loadMoreIndicatorView) {
         [_loadMoreIndicatorView stopAnimating];
 //        _loadMoreBtn.hidden = NO;
     }
 }
 
-
-#pragma mark - Util
-
-- (CGFloat)scrollViewOffsetFromBottom:(UIScrollView *) scrollView {
-    CGFloat scrollAreaContenHeight = scrollView.contentSize.height;
-    
-    CGFloat visibleTableHeight = MIN(scrollView.bounds.size.height, scrollAreaContenHeight);
-    CGFloat scrolledDistance = scrollView.contentOffset.y + visibleTableHeight;
-    
-    CGFloat normalizedOffset = scrollAreaContenHeight -scrolledDistance;
-    
-    return normalizedOffset;
-    
-}
-
 #pragma mark - private
 - (void)beginToLoadMore {
-    if ([_delegate respondsToSelector:@selector(loadMoreViewDidBeginToLoadMore:)]) {
+    if ([self.delegate respondsToSelector:@selector(loadMoreViewDidBeginToLoadMore:)]) {
         [_loadMoreIndicatorView startAnimating];
         _loadMoreBtn.hidden = YES;
-        self.isLoading = YES;
-        [_delegate loadMoreViewDidBeginToLoadMore:self];
+        self.state = SCLoadMoretateLoading;
+        [self.delegate loadMoreViewDidBeginToLoadMore:self];
     }
 }
 

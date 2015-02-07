@@ -1,25 +1,25 @@
 //
-//  SCTableViewController.m
+//  SCBasicTableViewController.m
 //  SCTableView
 //
-//  Created by Aevitx on 14-5-30.
+//  Created by Aevitx on 14-8-28.
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
-#import "SCTableViewController.h"
+#import "SCBasicTableViewController.h"
 
-@interface SCTableViewController ()
+@interface SCBasicTableViewController ()
 
 @end
 
-@implementation SCTableViewController
+@implementation SCBasicTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self commonInit];
+//        [self commonInit];
     }
     return self;
 }
@@ -29,27 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self commonInit];
-    
-    // 如果没用xib添加tableView，才需要在这里用代码添加talbeView
-    if (!_scTableView) {
-        SCTableView *aTable = [[SCTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-        [self.view addSubview:aTable];
-        self.scTableView = aTable;
-    }
-    _scTableView.delegate = self;
-    _scTableView.dataSource = self;
-    _scTableView.scDelegate = self;
-    [self refresh:_scTableView];
-}
-
-- (void)commonInit {
-    
     _currentPage = 1;
     
     if (!_dataArray) {
         _dataArray = [[NSMutableArray alloc] init];
     }
+    
+    [self commonInit];
+}
+
+- (void)commonInit {
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,8 +51,8 @@
     [self.dataArray removeAllObjects];
     self.dataArray = nil;
     
-    self.scTableView.delegate = nil; // 需要置空，不然pop或dismiss controller后，tableView的didScrollView方法仍会执行，这时就会报错
-    self.scTableView = nil;
+    self.scBasicTableView.delegate = nil; // 需要置空，不然pop或dismiss controller后，tableView的didScrollView方法仍会执行，这时就会报错
+    self.scBasicTableView = nil;
 }
 
 #pragma mark - public
@@ -81,12 +70,12 @@
  *  @param sender _scTableView
  */
 - (void)stopLoading:(id)sender {
-    if ([sender isKindOfClass:[SCTableView class]]) {
-        if (((SCTableView *)sender).isTableRefreshing) {
-            ((SCTableView *)sender).isTableRefreshing = NO;
+    if ([sender isKindOfClass:[SCBasicTableView class]]) {
+        if (((SCBasicTableView *)sender).isTableRefreshing) {
+            ((SCBasicTableView *)sender).isTableRefreshing = NO;
         }
-        if (((SCTableView *)sender).isTableLoadingMore) {
-            ((SCTableView *)sender).isTableLoadingMore = NO;
+        if (((SCBasicTableView *)sender).isTableLoadingMore) {
+            ((SCBasicTableView *)sender).isTableLoadingMore = NO;
         }
     }
 }
@@ -108,7 +97,7 @@
 - (void)refresh:(id)sender {
     _needRemoveObjects = YES;
     _currentPage = 1;
-    [self sendRequest:_scTableView];
+    [self sendRequest:_scBasicTableView];
 }
 
 /**
@@ -119,7 +108,7 @@
         return;
     } else {
         _currentPage = 1;
-        [self sendRequest:_scTableView];
+        [self sendRequest:_scBasicTableView];
     }
 }
 
@@ -134,12 +123,12 @@
 }
 
 #pragma mark - SCTableView delegate
-- (void)didBeginToRefresh:(SCTableView *)tableView {
-    [self performSelector:@selector(refresh:) withObject:_scTableView afterDelay:0.05f];
+- (void)didBeginToRefresh:(SCBasicTableView *)tableView {
+    [self performSelector:@selector(refresh:) withObject:_scBasicTableView afterDelay:0.05f];
 }
 
-- (void)didBeginToLoadMoreData:(SCTableView *)tableView {
-    [self performSelector:@selector(requestNextPage:) withObject:_scTableView afterDelay:0.05f];
+- (void)didBeginToLoadMoreData:(SCBasicTableView *)tableView {
+    [self performSelector:@selector(requestNextPage:) withObject:_scBasicTableView afterDelay:0.05f];
 }
 
 #pragma mark - tableview

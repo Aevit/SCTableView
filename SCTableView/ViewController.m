@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SCDemoTableViewController.h"
 #import "DemoViewController.h"
+#import "FootballDemoViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -46,7 +47,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,14 +61,16 @@
     (indexPath.row == 0 ? @"move refresh view (Controller)" :
      (indexPath.row == 1 ? @"static refresh view (Controller)" :
       (indexPath.row == 2 ? @"move refresh view (View)" :
-       (indexPath.row == 3 ? @"static refresh view (View)" : @"see the ghost"))));
+       (indexPath.row == 3 ? @"static refresh view (View)" :
+        (indexPath.row == 4 ? @"football refresh view (View)" : @"see the ghost")))));
     
     cell.detailTextLabel.numberOfLines = 2;
     cell.detailTextLabel.text =
-    (indexPath.row == 0 ? @"Inherit from SCTableViewController. \nAnd the refresh view will move with tableview" :
-     (indexPath.row == 1 ? @"Inherit from SCTableViewController. \nAnd the refresh view will NOT move with tableview" :
-      (indexPath.row == 2 ? @"Only add a SCTableView to a controller. \nAnd the refresh view will move with tableview" :
-       (indexPath.row == 3 ? @"Only add a SCTableView to a controller. \nAnd the refresh view NOT move with tableview" : @"see the ghost"))));
+    (indexPath.row == 0 ? @"Inherit from SCCircleTableViewController. \nAnd the refresh view will move with tableview" :
+     (indexPath.row == 1 ? @"Inherit from SCCircleTableViewController. \nAnd the refresh view will NOT move with tableview" :
+      (indexPath.row == 2 ? @"Only add a SCCircleTableView to a controller. \nAnd the refresh view will move with tableview" :
+       (indexPath.row == 3 ? @"Only add a SCCircleTableView to a controller. \nAnd the refresh view NOT move with tableview" :
+        (indexPath.row == 4 ? @"Add a tableview with a footballRefreshView" : @"see the ghost")))));
     return cell;
 }
 
@@ -100,6 +103,13 @@
         {
             DemoViewController *con = [[DemoViewController alloc] initWithNibName:@"DemoViewController" bundle:nil];
             con.shouldMoveRefreshViewWithTableView = NO;
+            [self.navigationController pushViewController:con animated:YES];
+            break;
+        }
+        case 4:
+        {
+            FootballDemoViewController *con = [[FootballDemoViewController alloc] initWithNibName:@"FootballDemoViewController" bundle:nil];
+//            con.shouldMoveRefreshViewWithTableView = NO;
             [self.navigationController pushViewController:con animated:YES];
             break;
         }

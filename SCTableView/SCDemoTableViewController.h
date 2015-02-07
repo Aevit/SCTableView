@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
-#import "SCTableViewController.h"
+#import "SCCircleTableViewController.h"
 
-@interface SCDemoTableViewController : SCTableViewController
+@interface SCDemoTableViewController : SCCircleTableViewController
 
 @property (nonatomic, assign) BOOL shouldMoveRefreshViewWithTableView;
 

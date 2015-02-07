@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E107D16A19AF28EE00770716 /* SCBasicTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D16919AF28EE00770716 /* SCBasicTableView.m */; };
+		E107D17419AF356E00770716 /* SCLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D16E19AF356E00770716 /* SCLoadMoreFooterView.m */; };
+		E107D17519AF356E00770716 /* SCRefreshCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D17119AF356E00770716 /* SCRefreshCircleView.m */; };
+		E107D17619AF356E00770716 /* SCRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D17319AF356E00770716 /* SCRefreshHeaderView.m */; };
+		E107D17919AF359400770716 /* SCCircleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D17819AF359400770716 /* SCCircleTableView.m */; };
+		E107D17C19AF36E400770716 /* SCBasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D17B19AF36E400770716 /* SCBasicTableViewController.m */; };
+		E107D17F19AF382500770716 /* SCCircleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D17E19AF382500770716 /* SCCircleTableViewController.m */; };
+		E107D18319AF7D3A00770716 /* SCFootballTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D18219AF7D3A00770716 /* SCFootballTableView.m */; };
+		E107D18719AF7E6A00770716 /* SCFootballRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = E107D18619AF7E6A00770716 /* SCFootballRefreshView.m */; };
+		E15AACD019B3598B00C4AC33 /* FootballDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15AACCE19B3598B00C4AC33 /* FootballDemoViewController.m */; };
+		E15AACD119B3598B00C4AC33 /* FootballDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15AACCF19B3598B00C4AC33 /* FootballDemoViewController.xib */; };
 		E162B82A1929160A00C3B944 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E162B8291929160A00C3B944 /* Foundation.framework */; };
 		E162B82C1929160A00C3B944 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E162B82B1929160A00C3B944 /* CoreGraphics.framework */; };
 		E162B82E1929160A00C3B944 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E162B82D1929160A00C3B944 /* UIKit.framework */; };
@@ -23,14 +34,11 @@
 		E162B8551929160A00C3B944 /* SCTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E162B8541929160A00C3B944 /* SCTableViewTests.m */; };
 		E1755831193830D000586D1C /* SCDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E175582F193830D000586D1C /* SCDemoTableViewController.m */; };
 		E1755832193830D000586D1C /* SCDemoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1755830193830D000586D1C /* SCDemoTableViewController.xib */; };
+		E1B25E6E19AECF7D0088C21A /* SCRefreshBasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B25E6D19AECF7D0088C21A /* SCRefreshBasicView.m */; };
+		E1B25E7119AED02C0088C21A /* SCLoadMoreBasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B25E7019AED02C0088C21A /* SCLoadMoreBasicView.m */; };
 		E1D4B95E19874636002AA041 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D4B95C19874636002AA041 /* DemoViewController.m */; };
 		E1D4B95F19874636002AA041 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D4B95D19874636002AA041 /* DemoViewController.xib */; };
-		E1F35EAD198767F900CF46DC /* SCLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F35EA2198767F900CF46DC /* SCLoadMoreFooterView.m */; };
 		E1F35EAE198767F900CF46DC /* SCMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F35EA4198767F900CF46DC /* SCMessageManager.m */; };
-		E1F35EAF198767F900CF46DC /* SCRefreshCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F35EA6198767F900CF46DC /* SCRefreshCircleView.m */; };
-		E1F35EB1198767F900CF46DC /* SCTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F35EAA198767F900CF46DC /* SCTableView.m */; };
-		E1F35EB2198767F900CF46DC /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F35EAC198767F900CF46DC /* SCTableViewController.m */; };
-		E1F35EB51987784000CF46DC /* SCRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F35EB41987784000CF46DC /* SCRefreshHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E107D16819AF28EE00770716 /* SCBasicTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBasicTableView.h; sourceTree = "<group>"; };
+		E107D16919AF28EE00770716 /* SCBasicTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBasicTableView.m; sourceTree = "<group>"; };
+		E107D16D19AF356E00770716 /* SCLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLoadMoreFooterView.h; sourceTree = "<group>"; };
+		E107D16E19AF356E00770716 /* SCLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLoadMoreFooterView.m; sourceTree = "<group>"; };
+		E107D17019AF356E00770716 /* SCRefreshCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRefreshCircleView.h; sourceTree = "<group>"; };
+		E107D17119AF356E00770716 /* SCRefreshCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRefreshCircleView.m; sourceTree = "<group>"; };
+		E107D17219AF356E00770716 /* SCRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRefreshHeaderView.h; sourceTree = "<group>"; };
+		E107D17319AF356E00770716 /* SCRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRefreshHeaderView.m; sourceTree = "<group>"; };
+		E107D17719AF359400770716 /* SCCircleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCircleTableView.h; sourceTree = "<group>"; };
+		E107D17819AF359400770716 /* SCCircleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCircleTableView.m; sourceTree = "<group>"; };
+		E107D17A19AF36E400770716 /* SCBasicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBasicTableViewController.h; sourceTree = "<group>"; };
+		E107D17B19AF36E400770716 /* SCBasicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBasicTableViewController.m; sourceTree = "<group>"; };
+		E107D17D19AF382500770716 /* SCCircleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCircleTableViewController.h; sourceTree = "<group>"; };
+		E107D17E19AF382500770716 /* SCCircleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCircleTableViewController.m; sourceTree = "<group>"; };
+		E107D18119AF7D3A00770716 /* SCFootballTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCFootballTableView.h; path = SCFootball/SCFootballTableView.h; sourceTree = "<group>"; };
+		E107D18219AF7D3A00770716 /* SCFootballTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCFootballTableView.m; path = SCFootball/SCFootballTableView.m; sourceTree = "<group>"; };
+		E107D18519AF7E6A00770716 /* SCFootballRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCFootballRefreshView.h; path = SCFootball/SCFootballRefreshView.h; sourceTree = "<group>"; };
+		E107D18619AF7E6A00770716 /* SCFootballRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCFootballRefreshView.m; path = SCFootball/SCFootballRefreshView.m; sourceTree = "<group>"; };
+		E15AACCD19B3598B00C4AC33 /* FootballDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootballDemoViewController.h; sourceTree = "<group>"; };
+		E15AACCE19B3598B00C4AC33 /* FootballDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootballDemoViewController.m; sourceTree = "<group>"; };
+		E15AACCF19B3598B00C4AC33 /* FootballDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootballDemoViewController.xib; sourceTree = "<group>"; };
 		E162B8261929160A00C3B944 /* SCTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E162B8291929160A00C3B944 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E162B82B1929160A00C3B944 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,21 +95,15 @@
 		E175582E193830D000586D1C /* SCDemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoTableViewController.h; sourceTree = "<group>"; };
 		E175582F193830D000586D1C /* SCDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoTableViewController.m; sourceTree = "<group>"; };
 		E1755830193830D000586D1C /* SCDemoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCDemoTableViewController.xib; sourceTree = "<group>"; };
+		E1B25E6C19AECF7D0088C21A /* SCRefreshBasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRefreshBasicView.h; sourceTree = "<group>"; };
+		E1B25E6D19AECF7D0088C21A /* SCRefreshBasicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRefreshBasicView.m; sourceTree = "<group>"; };
+		E1B25E6F19AED02C0088C21A /* SCLoadMoreBasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLoadMoreBasicView.h; sourceTree = "<group>"; };
+		E1B25E7019AED02C0088C21A /* SCLoadMoreBasicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLoadMoreBasicView.m; sourceTree = "<group>"; };
 		E1D4B95B19874636002AA041 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		E1D4B95C19874636002AA041 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		E1D4B95D19874636002AA041 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
-		E1F35EA1198767F900CF46DC /* SCLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLoadMoreFooterView.h; sourceTree = "<group>"; };
-		E1F35EA2198767F900CF46DC /* SCLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLoadMoreFooterView.m; sourceTree = "<group>"; };
 		E1F35EA3198767F900CF46DC /* SCMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMessageManager.h; sourceTree = "<group>"; };
 		E1F35EA4198767F900CF46DC /* SCMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMessageManager.m; sourceTree = "<group>"; };
-		E1F35EA5198767F900CF46DC /* SCRefreshCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRefreshCircleView.h; sourceTree = "<group>"; };
-		E1F35EA6198767F900CF46DC /* SCRefreshCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRefreshCircleView.m; sourceTree = "<group>"; };
-		E1F35EA9198767F900CF46DC /* SCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableView.h; sourceTree = "<group>"; };
-		E1F35EAA198767F900CF46DC /* SCTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableView.m; sourceTree = "<group>"; };
-		E1F35EAB198767F900CF46DC /* SCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewController.h; sourceTree = "<group>"; };
-		E1F35EAC198767F900CF46DC /* SCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewController.m; sourceTree = "<group>"; };
-		E1F35EB31987784000CF46DC /* SCRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRefreshHeaderView.h; sourceTree = "<group>"; };
-		E1F35EB41987784000CF46DC /* SCRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRefreshHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +130,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E107D16B19AF356D00770716 /* SCCircleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E107D17D19AF382500770716 /* SCCircleTableViewController.h */,
+				E107D17E19AF382500770716 /* SCCircleTableViewController.m */,
+				E107D17719AF359400770716 /* SCCircleTableView.h */,
+				E107D17819AF359400770716 /* SCCircleTableView.m */,
+				E107D16F19AF356E00770716 /* SCRefreshCircleView */,
+				E107D16C19AF356E00770716 /* SCLoadMoreView */,
+			);
+			path = SCCircleTableView;
+			sourceTree = "<group>";
+		};
+		E107D16C19AF356E00770716 /* SCLoadMoreView */ = {
+			isa = PBXGroup;
+			children = (
+				E107D16D19AF356E00770716 /* SCLoadMoreFooterView.h */,
+				E107D16E19AF356E00770716 /* SCLoadMoreFooterView.m */,
+			);
+			path = SCLoadMoreView;
+			sourceTree = "<group>";
+		};
+		E107D16F19AF356E00770716 /* SCRefreshCircleView */ = {
+			isa = PBXGroup;
+			children = (
+				E107D17219AF356E00770716 /* SCRefreshHeaderView.h */,
+				E107D17319AF356E00770716 /* SCRefreshHeaderView.m */,
+				E107D17019AF356E00770716 /* SCRefreshCircleView.h */,
+				E107D17119AF356E00770716 /* SCRefreshCircleView.m */,
+			);
+			path = SCRefreshCircleView;
+			sourceTree = "<group>";
+		};
+		E107D18019AF7D0C00770716 /* SCFootball */ = {
+			isa = PBXGroup;
+			children = (
+				E107D18119AF7D3A00770716 /* SCFootballTableView.h */,
+				E107D18219AF7D3A00770716 /* SCFootballTableView.m */,
+				E107D18419AF7E3F00770716 /* SCFootballRefreshView */,
+			);
+			name = SCFootball;
+			sourceTree = "<group>";
+		};
+		E107D18419AF7E3F00770716 /* SCFootballRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				E107D18519AF7E6A00770716 /* SCFootballRefreshView.h */,
+				E107D18619AF7E6A00770716 /* SCFootballRefreshView.m */,
+			);
+			name = SCFootballRefreshView;
+			sourceTree = "<group>";
+		};
 		E162B81D1929160A00C3B944 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +226,9 @@
 				E1D4B95B19874636002AA041 /* DemoViewController.h */,
 				E1D4B95C19874636002AA041 /* DemoViewController.m */,
 				E1D4B95D19874636002AA041 /* DemoViewController.xib */,
+				E15AACCD19B3598B00C4AC33 /* FootballDemoViewController.h */,
+				E15AACCE19B3598B00C4AC33 /* FootballDemoViewController.m */,
+				E15AACCF19B3598B00C4AC33 /* FootballDemoViewController.xib */,
 				E162B8411929160A00C3B944 /* Images.xcassets */,
 				E1F35EA0198767F900CF46DC /* SCTableViewClasses */,
 				E162B8301929160A00C3B944 /* Supporting Files */,
@@ -190,18 +268,18 @@
 		E1F35EA0198767F900CF46DC /* SCTableViewClasses */ = {
 			isa = PBXGroup;
 			children = (
-				E1F35EAB198767F900CF46DC /* SCTableViewController.h */,
-				E1F35EAC198767F900CF46DC /* SCTableViewController.m */,
-				E1F35EA9198767F900CF46DC /* SCTableView.h */,
-				E1F35EAA198767F900CF46DC /* SCTableView.m */,
-				E1F35EB31987784000CF46DC /* SCRefreshHeaderView.h */,
-				E1F35EB41987784000CF46DC /* SCRefreshHeaderView.m */,
-				E1F35EA5198767F900CF46DC /* SCRefreshCircleView.h */,
-				E1F35EA6198767F900CF46DC /* SCRefreshCircleView.m */,
-				E1F35EA1198767F900CF46DC /* SCLoadMoreFooterView.h */,
-				E1F35EA2198767F900CF46DC /* SCLoadMoreFooterView.m */,
+				E107D18019AF7D0C00770716 /* SCFootball */,
+				E107D16B19AF356D00770716 /* SCCircleTableView */,
+				E107D17A19AF36E400770716 /* SCBasicTableViewController.h */,
+				E107D17B19AF36E400770716 /* SCBasicTableViewController.m */,
+				E107D16819AF28EE00770716 /* SCBasicTableView.h */,
+				E107D16919AF28EE00770716 /* SCBasicTableView.m */,
 				E1F35EA3198767F900CF46DC /* SCMessageManager.h */,
 				E1F35EA4198767F900CF46DC /* SCMessageManager.m */,
+				E1B25E6C19AECF7D0088C21A /* SCRefreshBasicView.h */,
+				E1B25E6D19AECF7D0088C21A /* SCRefreshBasicView.m */,
+				E1B25E6F19AED02C0088C21A /* SCLoadMoreBasicView.h */,
+				E1B25E7019AED02C0088C21A /* SCLoadMoreBasicView.m */,
 			);
 			path = SCTableViewClasses;
 			sourceTree = "<group>";
@@ -284,6 +362,7 @@
 			files = (
 				E1755832193830D000586D1C /* SCDemoTableViewController.xib in Resources */,
 				E162B8421929160A00C3B944 /* Images.xcassets in Resources */,
+				E15AACD119B3598B00C4AC33 /* FootballDemoViewController.xib in Resources */,
 				E162B8341929160A00C3B944 /* InfoPlist.strings in Resources */,
 				E162B83D1929160A00C3B944 /* Main.storyboard in Resources */,
 				E1D4B95F19874636002AA041 /* DemoViewController.xib in Resources */,
@@ -305,17 +384,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1F35EB2198767F900CF46DC /* SCTableViewController.m in Sources */,
+				E107D17519AF356E00770716 /* SCRefreshCircleView.m in Sources */,
+				E1B25E6E19AECF7D0088C21A /* SCRefreshBasicView.m in Sources */,
+				E15AACD019B3598B00C4AC33 /* FootballDemoViewController.m in Sources */,
 				E162B8401929160A00C3B944 /* ViewController.m in Sources */,
 				E1D4B95E19874636002AA041 /* DemoViewController.m in Sources */,
-				E1F35EAF198767F900CF46DC /* SCRefreshCircleView.m in Sources */,
-				E1F35EB51987784000CF46DC /* SCRefreshHeaderView.m in Sources */,
+				E107D17419AF356E00770716 /* SCLoadMoreFooterView.m in Sources */,
 				E1F35EAE198767F900CF46DC /* SCMessageManager.m in Sources */,
+				E107D17F19AF382500770716 /* SCCircleTableViewController.m in Sources */,
+				E107D17619AF356E00770716 /* SCRefreshHeaderView.m in Sources */,
+				E107D17C19AF36E400770716 /* SCBasicTableViewController.m in Sources */,
 				E162B83A1929160A00C3B944 /* AppDelegate.m in Sources */,
 				E1755831193830D000586D1C /* SCDemoTableViewController.m in Sources */,
-				E1F35EAD198767F900CF46DC /* SCLoadMoreFooterView.m in Sources */,
 				E162B8361929160A00C3B944 /* main.m in Sources */,
-				E1F35EB1198767F900CF46DC /* SCTableView.m in Sources */,
+				E107D18319AF7D3A00770716 /* SCFootballTableView.m in Sources */,
+				E1B25E7119AED02C0088C21A /* SCLoadMoreBasicView.m in Sources */,
+				E107D18719AF7E6A00770716 /* SCFootballRefreshView.m in Sources */,
+				E107D16A19AF28EE00770716 /* SCBasicTableView.m in Sources */,
+				E107D17919AF359400770716 /* SCCircleTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

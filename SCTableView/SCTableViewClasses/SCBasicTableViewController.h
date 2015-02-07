@@ -1,18 +1,18 @@
 //
-//  SCTableViewController.h
+//  SCBasicTableViewController.h
 //  SCTableView
 //
-//  Created by Aevitx on 14-5-30.
+//  Created by Aevitx on 14-8-28.
 //  Copyright (c) 2014年 Aevitx. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SCTableView.h"
+#import "SCBasicTableView.h"
 
-@interface SCTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SCTableViewDelegate>
+@interface SCBasicTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SCBasicTableViewDelegate>
 
 
-@property (nonatomic, strong) IBOutlet SCTableView *scTableView;
+@property (nonatomic, strong) IBOutlet SCBasicTableView *scBasicTableView;
 
 /**
  *  存储数据
@@ -47,5 +47,13 @@
  *  重置列表数据
  */
 - (void)reloadData;
+
+/**
+ *  private method 发送更新信息，标记needRemoveObjects设置为yes, currentPage重置为第一页
+ *
+ *  @param sender _scTableView
+ */
+- (void)refresh:(id)sender;
+
 
 @end

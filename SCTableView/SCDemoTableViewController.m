@@ -30,6 +30,8 @@
     
     self.title = @"SCDemoTableViewController";
     
+    self.view.frame = [UIScreen mainScreen].bounds;
+    
     float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
     
     CGFloat tableViewY = (sysVersion < 7.0 ? 0 : (20 + (self.navigationController.navigationBarHidden ? 0 : self.navigationController.navigationBar.frame.size.height)));
@@ -68,7 +70,7 @@
         
         [self stopLoading:sender];
         
-        // SCTableViewController里，如果是下拉刷新的，会自动设置needRemoveObjects为YES
+        // SCCircleTableViewController里，如果是下拉刷新的，会自动设置needRemoveObjects为YES
         if (self.needRemoveObjects) {
             [self.dataArray removeAllObjects];
             self.needRemoveObjects = NO;

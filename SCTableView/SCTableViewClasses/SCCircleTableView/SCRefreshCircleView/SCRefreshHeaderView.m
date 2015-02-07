@@ -10,8 +10,6 @@
 
 @interface SCRefreshHeaderView ()
 
-@property (nonatomic, assign) BOOL isLoading;
-
 @property (nonatomic, strong) UILabel *statusLbl;
 
 
@@ -31,9 +29,12 @@
 
 - (void)commonInit {
     
+    
+    self.heightBeginToRefresh = (50 + HEIGHT_BEGIN_TO_DRAW_CIRCLE);
+    
     //
     SCRefreshCircleView *circle = [[SCRefreshCircleView alloc] initWithFrame:CGRectMake((self.frame.size.width - 20) / 2 - 30, (self.frame.size.height - 20) / 2, 20, 20)];
-    circle.heightBeginToRefresh = HEIGHT_BEGIN_TO_REFRESH - HEIGHT_BEGIN_TO_DRAW_CIRCLE;
+    circle.heightBeginToRefresh = self.heightBeginToRefresh - HEIGHT_BEGIN_TO_DRAW_CIRCLE;
     circle.offsetY = 0;
     [self addSubview:circle];
     self.refreshCircleView = circle;
@@ -52,12 +53,12 @@
 
 #pragma mark - public
 - (void)startRefreshAnimation:(UIScrollView*)scrollView {
-    if (self.isLoading) {
+    if (self.state == SCRefreshStateLoading) {
         return;
     }
     
-    if (_refreshCircleView.offsetY != HEIGHT_BEGIN_TO_REFRESH - HEIGHT_BEGIN_TO_DRAW_CIRCLE) {
-        _refreshCircleView.offsetY = HEIGHT_BEGIN_TO_REFRESH - HEIGHT_BEGIN_TO_DRAW_CIRCLE;
+    if (_refreshCircleView.offsetY != self.heightBeginToRefresh - HEIGHT_BEGIN_TO_DRAW_CIRCLE) {
+        _refreshCircleView.offsetY = self.heightBeginToRefresh - HEIGHT_BEGIN_TO_DRAW_CIRCLE;
         [_refreshCircleView setNeedsDisplay];
     }
     
@@ -74,42 +75,35 @@
     [_refreshCircleView.layer addAnimation:[SCRefreshCircleView repeatRotateAnimation] forKey:@"rotateAnimation"];
     
     [self setState:SCRefreshStateLoading];
-    
-    self.isLoading = YES;
 }
 
-#pragma mark - scrollView
+#pragma mark - override scrollView methods
 - (void)refreshViewDidScroll:(UIScrollView *)scrollView {
     
-    if (self.hidden) {
+    if (self.hidden || self.state == SCRefreshStateLoading) {
         return;
     }
-    if (!_isLoading) {
-        
-        if (ABS(scrollView.contentOffset.y) >= HEIGHT_BEGIN_TO_DRAW_CIRCLE) {
-            _refreshCircleView.offsetY = MIN(ABS(scrollView.contentOffset.y), HEIGHT_BEGIN_TO_REFRESH) - HEIGHT_BEGIN_TO_DRAW_CIRCLE;
-            [_refreshCircleView setNeedsDisplay];
-        }
-        if (scrollView.contentOffset.y <= -HEIGHT_BEGIN_TO_REFRESH) {
-            [self setState:SCRefreshStatePulling];
-        } else {
-            [self setState:SCRefreshStateNormal];
-        }
+    if (ABS(scrollView.contentOffset.y) >= HEIGHT_BEGIN_TO_DRAW_CIRCLE) {
+        _refreshCircleView.offsetY = MIN(ABS(scrollView.contentOffset.y), self.heightBeginToRefresh) - HEIGHT_BEGIN_TO_DRAW_CIRCLE;
+        [_refreshCircleView setNeedsDisplay];
+    }
+    if (scrollView.contentOffset.y <= -self.heightBeginToRefresh) {
+        [self setState:SCRefreshStatePulling];
+    } else {
+        [self setState:SCRefreshStateNormal];
     }
 }
 
 - (void)refreshViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     
-    if (self.hidden) {
+    if (self.hidden || self.state == SCRefreshStateLoading || scrollView.contentOffset.y > -self.heightBeginToRefresh) {
         return;
     }
-    if (!_isLoading && scrollView.contentOffset.y <= -HEIGHT_BEGIN_TO_REFRESH) {
-        if ([_delegate respondsToSelector:@selector(refreshViewDidBeginToRefresh:)]) {
-            
-            [self startRefreshAnimation:scrollView];
-            
-            [_delegate refreshViewDidBeginToRefresh:self];
-        }
+    if ([self.delegate respondsToSelector:@selector(refreshViewDidBeginToRefresh:)]) {
+        
+        [self startRefreshAnimation:scrollView];
+        
+        [self.delegate refreshViewDidBeginToRefresh:self];
     }
 }
 
@@ -135,37 +129,30 @@
             [_refreshCircleView.layer removeAllAnimations];
         }
     }];
-    
-    self.isLoading = NO;
-    
-    
 }
 
 #pragma mark - set state
-- (void)setState:(SCRefreshState)state {
-    if (_state == state) {
-        return;
-    }
+- (void)setTheState:(SCRefreshState)state {
+    
     if (!_statusLbl) {
         return;
     }
-    _state = state;
     switch (state) {
         case SCRefreshStateNormal:
         {
             _refreshCircleView.offsetY = 0;
             [_refreshCircleView setNeedsDisplay];
-            _statusLbl.text = @"下拉刷新";
+            self.statusLbl.text = @"下拉刷新";
             break;
         }
         case SCRefreshStatePulling:
         {
-            _statusLbl.text = @"释放立即更新";
+            self.statusLbl.text = @"释放立即更新";
             break;
         }
         case SCRefreshStateLoading:
         {
-            _statusLbl.text = @"正在刷新";
+            self.statusLbl.text = @"正在刷新";
             break;
         }
         default:
